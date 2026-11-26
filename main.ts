@@ -12,7 +12,7 @@ const ENTRY =
 if (ENTRY.length < 1 || ENTRY.length > 320) {
   throw new Error(`entry is ${ENTRY.length} characters, must be 1-320`);
 }
-if (ENTRY.split(".").filter(Boolean).length !== 1) {
+if ((ENTRY.match(/[.!?]/g) ?? []).length !== 1 || !ENTRY.endsWith(".")) {
   throw new Error("entry must be exactly one sentence");
 }
 
